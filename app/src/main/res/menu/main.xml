@@ -19,6 +19,4 @@
             android:title="@string/action_exit"
             android:orderInCategory="2"
             app:showAsAction="never"/>
-
-
 </menu>

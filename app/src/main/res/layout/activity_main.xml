@@ -18,6 +18,15 @@
                     android:background="?attr/colorPrimary"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/main_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+
+
+
         </LinearLayout>
 
     <android.support.design.widget.NavigationView
@@ -27,7 +36,7 @@
             android:layout_gravity="start">
 
         <include
-                layout="@layout/nagivation_view"/>
+                layout="@layout/navigation_view"/>
 
     </android.support.design.widget.NavigationView>
 

@@ -5,13 +5,13 @@
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
     <string name="action_exit">退出</string>
-    <string name="type_android">Android</string>
-    <string name="type_app">推荐APP</string>
-    <string name="type_ios">IOS</string>
-    <string name="type_picture">福利</string>
-    <string name="type_resourse">拓展资源</string>
-    <string name="type_video">休息视频</string>
-    <string name="type_web">前端技术</string>
-    <string name="bookmark">我的收藏</string>
-    <string name="type_all">所有内容</string>
+    <string name="category_android">Android</string>
+    <string name="category_app">推荐APP</string>
+    <string name="category_ios">IOS</string>
+    <string name="category_photo">福利</string>
+    <string name="category_resource">拓展资源</string>
+    <string name="category_video">休息视频</string>
+    <string name="category_web">前端技术</string>
+    <string name="category_bookmark">我的收藏</string>
+    <string name="category_all">所有内容</string>
 </resources>

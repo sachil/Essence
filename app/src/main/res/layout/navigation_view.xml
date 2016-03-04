@@ -7,6 +7,7 @@
               android:layout_height="match_parent">
 
     <RelativeLayout
+            android:id="@+id/navigation_header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
@@ -33,10 +34,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginTop="@dimen/half_margin">
+                android:paddingBottom="@dimen/default_margin"
+                android:paddingTop="@dimen/half_margin">
 
             <RelativeLayout
+                    android:id="@+id/category_all"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -57,10 +59,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_all"/>
+                        android:text="@string/category_all"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_android"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -81,10 +84,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_android"/>
+                        android:text="@string/category_android"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_ios"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -105,10 +109,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_ios"/>
+                        android:text="@string/category_ios"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_web"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -129,10 +134,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_web"/>
+                        android:text="@string/category_web"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_resource"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -153,10 +159,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_resourse"/>
+                        android:text="@string/category_resource"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_app"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -177,10 +184,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_app"/>
+                        android:text="@string/category_app"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_photo"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -201,11 +209,12 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_picture"/>
+                        android:text="@string/category_photo"/>
             </RelativeLayout>
 
 
             <RelativeLayout
+                    android:id="@+id/category_video"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -226,10 +235,11 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/type_video"/>
+                        android:text="@string/category_video"/>
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/category_bookmark"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -250,12 +260,10 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/bookmark"/>
+                        android:text="@string/category_bookmark"/>
             </RelativeLayout>
 
         </LinearLayout>
-
-
     </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

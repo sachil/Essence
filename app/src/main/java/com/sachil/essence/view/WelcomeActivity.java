@@ -27,6 +27,8 @@ public class WelcomeActivity extends BaseActivity {
         }, 3000);
     }
 
+
+
     private void initView() {
         mLogoView = (ImageView) findViewById(R.id.welcome_logo);
     }
