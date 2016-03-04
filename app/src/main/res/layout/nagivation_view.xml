@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:background="?attr/colorPrimary">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:text="@string/app_name"
+                style="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="16"
+            android:scrollbars="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginTop="@dimen/half_margin">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_all"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_all"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_android"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_android"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_ios"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_ios"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_web"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_web"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_resource"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_resourse"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_app"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_app"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_photo"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_picture"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_video"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/type_video"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/vector_bookmark"
+                        tools:ignore="contentDescription"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/navigation_text_margin"
+                        android:layout_marginRight="@dimen/default_margin"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/bookmark"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
