@@ -6,8 +6,8 @@ public interface IGank {
 
     void getDataByCategory(String category,int count,int pageIndex);
 
-    void getDataByDate(String date);
+    void getDataByDate(String year,String month,String day);
 
-    void getDataByRandom(String category,int count,int pageIndex);
+    void getDataByRandom(String category,int count);
 
 }

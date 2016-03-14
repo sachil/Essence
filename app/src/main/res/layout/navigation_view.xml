@@ -113,7 +113,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                    android:id="@+id/category_web"
+                    android:id="@+id/category_front_end"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
@@ -134,7 +134,7 @@
                         android:layout_marginRight="@dimen/default_margin"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:gravity="center_vertical"
-                        android:text="@string/category_web"/>
+                        android:text="@string/category_front_end"/>
             </RelativeLayout>
 
             <RelativeLayout

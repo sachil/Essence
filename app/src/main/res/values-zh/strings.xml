@@ -11,7 +11,7 @@
     <string name="category_photo">福利</string>
     <string name="category_resource">拓展资源</string>
     <string name="category_video">休息视频</string>
-    <string name="category_web">前端技术</string>
+    <string name="category_front_end">前端技术</string>
     <string name="category_bookmark">我的收藏</string>
     <string name="category_all">所有内容</string>
 </resources>

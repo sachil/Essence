@@ -4,10 +4,12 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -21,8 +23,17 @@ import android.widget.TextView;
 import com.sachil.essence.R;
 import com.sachil.essence.StatusBarUtils;
 import com.sachil.essence.presenter.GankPresenter;
+import com.sachil.essence.presenter.adapter.ItemView;
+import com.sachil.essence.ui.view.ICategoryAll;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.List;
+
+import kale.adapter.CommonRcvAdapter;
+import kale.adapter.item.AdapterItem;
+import kale.adapter.util.IAdapter;
+
+public class MainActivity extends BaseActivity implements View.OnClickListener, ICategoryAll {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Toolbar mToolbar = null;
     private NavigationView mNavigation = null;
@@ -33,7 +44,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ViewGroup mCategoryAll = null;
     private ViewGroup mCategoryAndroid = null;
     private ViewGroup mCategoryIos = null;
-    private ViewGroup mCategoryWeb = null;
+    private ViewGroup mCategoryFrontEnd = null;
     private ViewGroup mCategoryResource = null;
     private ViewGroup mCategoryApp = null;
     private ViewGroup mCategoryPhoto = null;
@@ -41,13 +52,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ViewGroup mCategoryBookmark = null;
     private ViewGroup mSelectedCategory = null;
     private NavigationView mNavigationView = null;
+    private GankPresenter mGankPresenter = null;
+    private List<Object> mTestData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        new GankPresenter().listHistory();
+        for (int i = 0; i < 100; i++)
+            mTestData.add(new Integer(i));
+        mGankPresenter = new GankPresenter(this);
+        mGankPresenter.getDataByDate("2016", "03", "14");
     }
 
     @Override
@@ -109,9 +125,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 setCategoryColor(mCategoryIos, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_ios);
                 break;
-            case R.id.category_web:
-                setCategoryColor(mCategoryWeb, getThemeColor());
-                getSupportActionBar().setTitle(R.string.category_web);
+            case R.id.category_front_end:
+                setCategoryColor(mCategoryFrontEnd, getThemeColor());
+                getSupportActionBar().setTitle(R.string.category_front_end);
                 break;
             case R.id.category_resource:
                 setCategoryColor(mCategoryResource, getThemeColor());
@@ -137,6 +153,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mDrawer.closeDrawer(Gravity.LEFT);
     }
 
+    @Override
+    public void hideLoadingView() {
+        mRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mRefreshLayout.setRefreshing(false);
+                ((IAdapter) mRecyclerView.getAdapter()).setData(mTestData);
+                mRecyclerView.getAdapter().notifyDataSetChanged();
+            }
+        });
+    }
+
+    @Override
+    public void showLoadingView() {
+        mRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mRefreshLayout.setRefreshing(true);
+            }
+        });
+    }
+
+
     private void setCategoryColor(View category, int color) {
         if (category instanceof ViewGroup) {
             mSelectedCategory = (ViewGroup) category;
@@ -155,7 +194,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setCategoryColor(mCategoryAll, getNormalTextColor());
         setCategoryColor(mCategoryAndroid, getNormalTextColor());
         setCategoryColor(mCategoryIos, getNormalTextColor());
-        setCategoryColor(mCategoryWeb, getNormalTextColor());
+        setCategoryColor(mCategoryFrontEnd, getNormalTextColor());
         setCategoryColor(mCategoryResource, getNormalTextColor());
         setCategoryColor(mCategoryApp, getNormalTextColor());
         setCategoryColor(mCategoryPhoto, getNormalTextColor());
@@ -177,8 +216,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.main_refresh_layout);
         mRefreshLayout.setColorSchemeColors(getThemeColor());
         mRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.white);
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mGankPresenter.listHistory();
+            }
+        });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setAdapter(new CommonRcvAdapter<Object>(null) {
+            @NonNull
+            @Override
+            public AdapterItem createItem(Object o) {
+                return new ItemView();
+            }
+        });
         mRecyclerView.setOnClickListener(this);
         mNavigationHeader = (ViewGroup) findViewById(R.id.navigation_header);
         mCategoryAll = (ViewGroup) findViewById(R.id.category_all);
@@ -188,8 +241,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mCategoryAndroid.setOnClickListener(this);
         mCategoryIos = (ViewGroup) findViewById(R.id.category_ios);
         mCategoryIos.setOnClickListener(this);
-        mCategoryWeb = (ViewGroup) findViewById(R.id.category_web);
-        mCategoryWeb.setOnClickListener(this);
+        mCategoryFrontEnd = (ViewGroup) findViewById(R.id.category_front_end);
+        mCategoryFrontEnd.setOnClickListener(this);
         mCategoryResource = (ViewGroup) findViewById(R.id.category_resource);
         mCategoryResource.setOnClickListener(this);
         mCategoryApp = (ViewGroup) findViewById(R.id.category_app);

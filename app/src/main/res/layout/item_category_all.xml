@@ -52,6 +52,7 @@
                 android:layout_height="match_parent"
                 android:layout_above="@id/category_all_bookmark"
                 android:scaleType="fitXY"
+                android:src="@mipmap/test"
                 tools:ignore="contentDescription"/>
 
     </RelativeLayout>
