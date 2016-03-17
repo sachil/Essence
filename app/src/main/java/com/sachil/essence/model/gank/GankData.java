@@ -1,11 +1,11 @@
-package com.sachil.essence.model.bean;
+package com.sachil.essence.model.gank;
 
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GankResults<T> {
+public class GankData<T> {
 
     @SerializedName("category")
     private List<String> mCategories = null;
@@ -14,7 +14,7 @@ public class GankResults<T> {
     private boolean mError = false;
 
     @SerializedName("results")
-    private T mResults = null;
+    private T mData = null;
 
     public List<String> getCategories() {
         return mCategories;
@@ -24,7 +24,7 @@ public class GankResults<T> {
         return mError;
     }
 
-    public T getResults() {
-        return mResults;
+    public T getData() {
+        return mData;
     }
 }
