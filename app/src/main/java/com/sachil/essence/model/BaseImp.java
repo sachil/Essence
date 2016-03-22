@@ -19,10 +19,4 @@ public abstract class BaseImp {
             mGankInterface = mRetrofit.create(GankInterface.class);
         mListener = listener;
     }
-
-    public enum REQUEST_TYPE {
-        LIST_HISTORY, GET_DATA_BY_CATEGORY,
-        GET_DATA_BY_DATE, GET_DATA_BY_RANDOM
-    }
-
 }

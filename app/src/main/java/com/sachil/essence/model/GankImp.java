@@ -3,6 +3,7 @@ package com.sachil.essence.model;
 import com.sachil.essence.model.gank.GankCategoryData;
 import com.sachil.essence.model.gank.GankData;
 import com.sachil.essence.model.gank.GankDateData;
+import com.sachil.essence.model.gank.GankHistoryData;
 
 import java.util.List;
 
@@ -27,12 +28,12 @@ public class GankImp extends BaseImp implements IGank {
             @Override
             public void onResponse(Call<GankData<List<String>>> call, Response<GankData<List<String>>> response) {
                 if (response.isSuccess())
-                    mListener.onSucceed(REQUEST_TYPE.LIST_HISTORY, response.body());
+                    mListener.onSucceed(RequestFinishedListener.LIST_HISTORY,response.body());
             }
 
             @Override
             public void onFailure(Call<GankData<List<String>>> call, Throwable t) {
-                mListener.onFailed(REQUEST_TYPE.LIST_HISTORY, t);
+                mListener.onFailed(RequestFinishedListener.LIST_HISTORY,t);
             }
         });
     }
@@ -45,18 +46,18 @@ public class GankImp extends BaseImp implements IGank {
             @Override
             public void onResponse(Call<GankData<List<GankCategoryData>>> call, Response<GankData<List<GankCategoryData>>> response) {
                 if (response.isSuccess())
-                    mListener.onSucceed(REQUEST_TYPE.GET_DATA_BY_CATEGORY, response.body());
+                    mListener.onSucceed(RequestFinishedListener.GET_CATEGORY_DATA,response.body());
             }
 
             @Override
             public void onFailure(Call<GankData<List<GankCategoryData>>> call, Throwable t) {
-                mListener.onFailed(REQUEST_TYPE.GET_DATA_BY_CATEGORY, t);
+                mListener.onFailed(RequestFinishedListener.GET_CATEGORY_DATA,t);
             }
         });
     }
 
     @Override
-    public void getDataByDate(String year, String month, String day) {
+    public void getDataByDate(final String year, final String month, final String day) {
 
         Call<GankData<GankDateData>> call = mGankInterface.getDataByDate(year, month, day);
 
@@ -64,12 +65,12 @@ public class GankImp extends BaseImp implements IGank {
             @Override
             public void onResponse(Call<GankData<GankDateData>> call, Response<GankData<GankDateData>> response) {
                 if (response.isSuccess())
-                    mListener.onSucceed(REQUEST_TYPE.GET_DATA_BY_DATE, response.body());
+                    mListener.onSucceed(RequestFinishedListener.GET_DATE_DATA,new GankHistoryData(year,month,day,response.body().getData()));
             }
 
             @Override
             public void onFailure(Call<GankData<GankDateData>> call, Throwable t) {
-                mListener.onFailed(REQUEST_TYPE.GET_DATA_BY_DATE, t);
+                mListener.onFailed(RequestFinishedListener.GET_DATE_DATA,t);
             }
         });
 
@@ -85,12 +86,12 @@ public class GankImp extends BaseImp implements IGank {
             @Override
             public void onResponse(Call<GankData<List<GankCategoryData>>> call, Response<GankData<List<GankCategoryData>>> response) {
                 if (response.isSuccess())
-                    mListener.onSucceed(REQUEST_TYPE.GET_DATA_BY_RANDOM, response.body());
+                    mListener.onSucceed(RequestFinishedListener.GET_CATEGORY_DATA,response.body());
             }
 
             @Override
             public void onFailure(Call<GankData<List<GankCategoryData>>> call, Throwable t) {
-                mListener.onFailed(REQUEST_TYPE.GET_DATA_BY_RANDOM, t);
+                mListener.onFailed(RequestFinishedListener.GET_CATEGORY_DATA,t);
             }
         });
     }

@@ -1,12 +1,12 @@
 package com.sachil.essence.model;
 
-import com.sachil.essence.model.BaseImp.REQUEST_TYPE;
-import com.sachil.essence.model.gank.GankData;
-
 public interface RequestFinishedListener {
+    int LIST_HISTORY = 0X01;
+    int GET_DATE_DATA = 0X02;
+    int GET_CATEGORY_DATA = 0X03;
 
-    void onSucceed(REQUEST_TYPE type,GankData results);
+    void onSucceed(int request, Object results);
 
-    void onFailed(REQUEST_TYPE type,Throwable throwable);
+    void onFailed(int request, Throwable throwable);
 
 }

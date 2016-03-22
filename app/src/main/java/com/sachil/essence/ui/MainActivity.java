@@ -4,7 +4,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,16 +21,10 @@ import android.widget.TextView;
 
 import com.sachil.essence.R;
 import com.sachil.essence.StatusBarUtils;
-import com.sachil.essence.model.BaseImp;
-import com.sachil.essence.presenter.GankDateItem;
-import com.sachil.essence.presenter.GankPresenter;
+import com.sachil.essence.model.RequestFinishedListener;
+import com.sachil.essence.presenter.GankCategoryDataPresenter;
+import com.sachil.essence.presenter.GankDateDataPresenter;
 import com.sachil.essence.ui.view.IBase;
-
-import java.util.List;
-
-import kale.adapter.CommonRcvAdapter;
-import kale.adapter.item.AdapterItem;
-import kale.adapter.util.IAdapter;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, IBase {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -52,15 +45,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private ViewGroup mCategoryBookmark = null;
     private ViewGroup mSelectedCategory = null;
     private NavigationView mNavigationView = null;
-    private GankPresenter mGankPresenter = null;
+    private GankCategoryDataPresenter mCategoryDataPresenter = null;
+    private GankDateDataPresenter mDateDataPresenter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        mGankPresenter = new GankPresenter(this);
-        mGankPresenter.listHistory();
+        mCategoryDataPresenter = new GankCategoryDataPresenter(this);
+        mDateDataPresenter = new GankDateDataPresenter(this);
+        mDateDataPresenter.listHistory();
     }
 
     @Override
@@ -117,37 +112,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.category_android:
                 setCategoryColor(mCategoryAndroid, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_android);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_ANDROID);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_ANDROID);
                 break;
             case R.id.category_ios:
                 setCategoryColor(mCategoryIos, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_ios);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_IOS);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_IOS);
                 break;
             case R.id.category_front_end:
                 setCategoryColor(mCategoryFrontEnd, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_front_end);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_FRONT_END);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_FRONT_END);
                 break;
             case R.id.category_resource:
                 setCategoryColor(mCategoryResource, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_resource);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_RES);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_RES);
                 break;
             case R.id.category_app:
                 setCategoryColor(mCategoryApp, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_app);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_APP);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_APP);
                 break;
             case R.id.category_photo:
                 setCategoryColor(mCategoryPhoto, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_photo);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_PHOTO);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_PHOTO);
                 break;
             case R.id.category_video:
                 setCategoryColor(mCategoryVideo, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_video);
-                mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_VIDEO);
+                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_VIDEO);
                 break;
             case R.id.category_bookmark:
                 setCategoryColor(mCategoryBookmark, getThemeColor());
@@ -159,34 +154,38 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void hideLoadingView() {
-        mRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mRefreshLayout.setRefreshing(false);
-            }
-        });
+        if (mRefreshLayout.isRefreshing())
+            mRefreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    mRefreshLayout.setRefreshing(false);
+                }
+            });
     }
 
     @Override
     public void showLoadingView() {
-        mRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mRefreshLayout.setRefreshing(true);
-            }
-        });
+        if (!mRefreshLayout.isRefreshing())
+            mRefreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    mRefreshLayout.setRefreshing(true);
+                }
+            });
     }
 
     @Override
-    public void updateData(BaseImp.REQUEST_TYPE type, Object data) {
-
-        switch (type) {
-            case LIST_HISTORY:
-                break;
-            case GET_DATA_BY_CATEGORY:
-                break;
-            case GET_DATA_BY_RANDOM:
-                break;
+    public void updateData(int dataType, final Object data) {
+        if (dataType == RequestFinishedListener.LIST_HISTORY) {
+            if (mRecyclerView.getAdapter() == null)
+                mRecyclerView.setAdapter(mDateDataPresenter.getAdapter());
+        } else if (dataType == RequestFinishedListener.GET_DATE_DATA) {
+            UI_THREAD.post(new Runnable() {
+                @Override
+                public void run() {
+                    mRecyclerView.getAdapter().notifyItemChanged((Integer) data);
+                }
+            });
         }
     }
 
@@ -233,12 +232,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mGankPresenter.listHistory();
+                mDateDataPresenter.listHistory();
             }
         });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setItemAnimator(null);
         mRecyclerView.setOnClickListener(this);
         mNavigationHeader = (ViewGroup) findViewById(R.id.navigation_header);
         mCategoryAll = (ViewGroup) findViewById(R.id.category_all);
