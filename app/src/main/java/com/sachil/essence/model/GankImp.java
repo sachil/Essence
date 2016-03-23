@@ -46,7 +46,7 @@ public class GankImp extends BaseImp implements IGank {
             @Override
             public void onResponse(Call<GankData<List<GankCategoryData>>> call, Response<GankData<List<GankCategoryData>>> response) {
                 if (response.isSuccess())
-                    mListener.onSucceed(RequestFinishedListener.GET_CATEGORY_DATA,response.body());
+                    mListener.onSucceed(RequestFinishedListener.GET_CATEGORY_DATA,response.body().getData());
             }
 
             @Override
@@ -86,7 +86,7 @@ public class GankImp extends BaseImp implements IGank {
             @Override
             public void onResponse(Call<GankData<List<GankCategoryData>>> call, Response<GankData<List<GankCategoryData>>> response) {
                 if (response.isSuccess())
-                    mListener.onSucceed(RequestFinishedListener.GET_CATEGORY_DATA,response.body());
+                    mListener.onSucceed(RequestFinishedListener.GET_CATEGORY_DATA,response.body().getData());
             }
 
             @Override

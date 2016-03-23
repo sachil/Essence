@@ -24,6 +24,7 @@ import com.sachil.essence.StatusBarUtils;
 import com.sachil.essence.model.RequestFinishedListener;
 import com.sachil.essence.presenter.GankCategoryDataPresenter;
 import com.sachil.essence.presenter.GankDateDataPresenter;
+import com.sachil.essence.presenter.GankPresenter;
 import com.sachil.essence.ui.view.IBase;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, IBase {
@@ -108,41 +109,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.category_all:
                 setCategoryColor(mCategoryAll, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_all);
+                mDateDataPresenter.listHistory();
                 break;
             case R.id.category_android:
                 setCategoryColor(mCategoryAndroid, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_android);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_ANDROID);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_ANDROID);
                 break;
             case R.id.category_ios:
                 setCategoryColor(mCategoryIos, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_ios);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_IOS);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_IOS);
                 break;
             case R.id.category_front_end:
                 setCategoryColor(mCategoryFrontEnd, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_front_end);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_FRONT_END);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_FRONT_END);
                 break;
             case R.id.category_resource:
                 setCategoryColor(mCategoryResource, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_resource);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_RES);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_RES);
                 break;
             case R.id.category_app:
                 setCategoryColor(mCategoryApp, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_app);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_APP);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_APP);
                 break;
             case R.id.category_photo:
                 setCategoryColor(mCategoryPhoto, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_photo);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_PHOTO);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_PHOTO);
                 break;
             case R.id.category_video:
                 setCategoryColor(mCategoryVideo, getThemeColor());
                 getSupportActionBar().setTitle(R.string.category_video);
-                //mGankPresenter.getDataByCategory(GankPresenter.CATEGORY_VIDEO);
+                mCategoryDataPresenter.getDataByCategory(GankPresenter.CATEGORY_VIDEO);
                 break;
             case R.id.category_bookmark:
                 setCategoryColor(mCategoryBookmark, getThemeColor());
@@ -177,8 +179,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void updateData(int dataType, final Object data) {
         if (dataType == RequestFinishedListener.LIST_HISTORY) {
-            if (mRecyclerView.getAdapter() == null)
-                mRecyclerView.setAdapter(mDateDataPresenter.getAdapter());
+            mRecyclerView.setAdapter(mDateDataPresenter.getAdapter());
         } else if (dataType == RequestFinishedListener.GET_DATE_DATA) {
             UI_THREAD.post(new Runnable() {
                 @Override
@@ -186,6 +187,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     mRecyclerView.getAdapter().notifyItemChanged((Integer) data);
                 }
             });
+        } else if (dataType == RequestFinishedListener.GET_CATEGORY_DATA) {
+            mRecyclerView.setAdapter(mCategoryDataPresenter.getAdapter());
         }
     }
 

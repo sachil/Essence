@@ -21,11 +21,11 @@ public class GankDateViewHolder extends BaseViewHolder<GankHistoryData> {
     private ImageView mPhoto = null;
 
     public GankDateViewHolder(ViewGroup parent) {
-        super(parent, R.layout.item_category_all);
+        super(parent, R.layout.item_gank_date);
         mBookmark = bindView(R.id.category_bookmark);
-        mDate = bindView(R.id.category_all_date);
-        mTitle = bindView(R.id.category_all_title);
-        mPhoto = bindView(R.id.category_all_photo);
+        mDate = bindView(R.id.gank_date_time);
+        mTitle = bindView(R.id.gank_date_title);
+        mPhoto = bindView(R.id.gank_date_photo);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class GankDateViewHolder extends BaseViewHolder<GankHistoryData> {
             List<GankCategoryData> photoData = dateData.getPhoto();
             List<GankCategoryData> videoData = dateData.getVideo();
             if (photoData != null && photoData.size() > 0)
-                Glide.with(getContext()).load(photoData.get(0).getUrl()).into(mPhoto);
+                Glide.with(getContext()).load(photoData.get(0).getUrl()).crossFade().into(mPhoto);
             if (videoData != null && videoData.size() > 0)
                 mTitle.setText(videoData.get(0).getDetail());
         } else {

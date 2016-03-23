@@ -25,7 +25,6 @@ public class BaseActivity extends AppCompatActivity {
             return value.data;
         }else
             return mThemeColor;
-
     }
 
     protected int getNormalTextColor(){
