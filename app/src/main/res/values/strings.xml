@@ -14,5 +14,7 @@
     <string name="category_resource">Resource</string>
     <string name="category_all">ALL</string>
     <string name="category_bookmark">Bookmark</string>
+    <string name="about_introduce">每日分享妹子图和技术干货，还有供大家中午休息的休闲视频。所有数据均来自于<a href="https://github.com/daimajia">代码家</a>的<a href="http://gank.io/">干货集中营</a>。</string>
+    <string name="about_app_link">项目开源地址：<a href="https://github.com/sachil/Essence">Essence</a></string>
 
 </resources>

@@ -25,13 +25,11 @@ public class GankDateDataPresenter extends GankPresenter {
     @Override
     public void onFailed(int request, Throwable throwable) {
         mBaseView.hideLoadingView();
-        Log.e(TAG, "-------------------------");
     }
 
     @Override
     public void onSucceed(int request, Object results) {
         if (request == LIST_HISTORY) {
-            Log.e(TAG, "++++++++++++++++++++++");
             mBaseView.hideLoadingView();
             List<String> historyList = (List<String>) ((GankData) results).getData();
             if (mDataList.size() != 0)

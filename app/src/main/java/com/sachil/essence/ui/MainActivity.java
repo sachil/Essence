@@ -1,5 +1,6 @@
 package com.sachil.essence.ui;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -72,6 +73,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mDrawer.openDrawer(Gravity.LEFT);
                 break;
             case R.id.action_about:
+                startActivity(new Intent(this, AboutActivity.class));
                 break;
             case R.id.action_settings:
                 break;
