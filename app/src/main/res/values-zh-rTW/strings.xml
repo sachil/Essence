@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Essence</string>
+    <string name="exit_app_help_toast">再按一次退出</string>
+
+    <string name="navigation_menu_essence">干货</string>
+    <string name="navigation_menu_article">专题</string>
+    <string name="navigation_menu_weekly_popular">本周最热</string>
+    <string name="navigation_menu_girl">妹纸</string>
+    <string name="navigation_menu_settings">设置</string>
+
+    <string name="tab_category_type_article">专题</string>
+    <string name="tab_category_type_essence">干货</string>
+    <string name="tab_category_type_girl">妹纸</string>
+
+    <string name="recycler_view_state_loading">正在加载...</string>
+    <string name="recycler_view_state_failed">加载失败</string>
+    <string name="recycler_view_state_no_more">已经到底了</string>
+
+    <string name="menu_weekly_popular_sorted_by_view_count">按浏览排序</string>
+    <string name="menu_weekly_popular_sorted_by_star_count">按收藏排序</string>
+    <string name="menu_weekly_popular_sorted_by_comment_count">按回复排序</string>
+
+    <string name="recycler_view_empty_helper">暂时没有数据</string>
+
+    <string name="dialog_title">提示</string>
+    <string name="dialog_positive_button">确定</string>
+    <string name="dialog_negative_button">取消</string>
+    <string name="dialog_clear_cache_tips">确定要删除所有缓存？离线内容及图片均会被清除</string>
+</resources>

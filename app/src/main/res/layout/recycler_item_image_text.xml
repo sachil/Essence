@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/colorSurface">
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:constraint_referenced_ids="title,author,publishDate,image,description,viewCounts,likeCounts"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/highEmphasisTextColor"
+        android:padding="@dimen/dp_8"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="一款轻阅读应用ReadIT，记录我的RN躺坑之旅" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_8"
+        android:maxLines="1"
+        android:textColor="@color/mediumEmphasisTextColor"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="24k-小清新" />
+
+    <TextView
+        android:id="@+id/publishDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_8"
+        android:maxLines="1"
+        android:textColor="@color/mediumEmphasisTextColor"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="2021-04-14 01:00:26" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:padding="@dimen/dp_8"
+        app:layout_constraintDimensionRatio="W,1:2"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/author" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        tools:text="一个面对协议编程、可高度自定义、默认效果丰富的手势密码、图形密码库、九宫格密码，相比于其他同类三方库有哪些优势：完全面对协议编程，支持高度自定义网格视图和连接线视图，轻松实现各类不同需求"
+        android:textColor="@color/mediumEmphasisTextColor" />
+
+    <TextView
+        android:id="@+id/viewCounts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:gravity="center"
+        android:padding="@dimen/dp_8"
+        android:textColor="@color/mediumEmphasisTextColor"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        tools:text="1988"
+        app:drawableLeftCompat="@drawable/icon_recycler_item_view_count_normal" />
+
+    <TextView
+        android:id="@+id/likeCounts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:gravity="center"
+        android:padding="@dimen/dp_8"
+        android:textColor="@color/mediumEmphasisTextColor"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        tools:text="1988"
+        app:drawableLeftCompat="@drawable/icon_recycler_item_like_count_normal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

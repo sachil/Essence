@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:id="@+id/menu_weekly_popular_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_weekly_popular_sorted_by_view_count"
+            android:title="@string/menu_weekly_popular_sorted_by_view_count" />
+
+        <item
+            android:id="@+id/menu_weekly_popular_sorted_by_star_count"
+            android:title="@string/menu_weekly_popular_sorted_by_star_count" />
+
+<!--        <item-->
+<!--            android:id="@+id/menu_weekly_popular_sorted_by_comment_count"-->
+<!--            android:title="@string/menu_weekly_popular_sorted_by_comment_count" />-->
+    </group>
+</menu>
