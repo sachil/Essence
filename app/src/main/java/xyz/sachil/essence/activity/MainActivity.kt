@@ -1,7 +1,6 @@
 package xyz.sachil.essence.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +14,6 @@ import kotlinx.coroutines.launch
 import xyz.sachil.essence.R
 import xyz.sachil.essence.databinding.ActivityMainBinding
 import xyz.sachil.essence.vm.MainViewModel
-import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 

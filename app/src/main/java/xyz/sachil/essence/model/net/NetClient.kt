@@ -14,9 +14,10 @@ class NetClient private constructor() {
 
     companion object {
         private const val TAG = "NetClient"
-        //private const val HOST =
         private const val BASE_URL = "https://${Utils.HOST}"
-        private const val TIME_OUT = 30 * 1000L
+        private const val CONNECT_TIME_OUT = 5 * 1000L
+        private const val READ_WRITE_TIME_OUT = 10 * 1000L
+        private const val CALL_TIME_OUT = 30 * 1000L
 
         @Volatile
         private var netClient: NetClient? = null
@@ -29,10 +30,10 @@ class NetClient private constructor() {
     init {
         val trustManager = IgnoreExpiredCertificateManager()
         val httpClient = OkHttpClient.Builder()
-            .connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
-            .readTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
-            .writeTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
-            .callTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
+            .connectTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
+            .readTimeout(READ_WRITE_TIME_OUT, TimeUnit.MILLISECONDS)
+            .writeTimeout(READ_WRITE_TIME_OUT, TimeUnit.MILLISECONDS)
+            .callTimeout(CALL_TIME_OUT, TimeUnit.MILLISECONDS)
             .sslSocketFactory(trustManager.getSSLContext()!!.socketFactory, trustManager)
             .build()
 
@@ -51,14 +52,14 @@ class NetClient private constructor() {
         netClient.getTypes(category.type).data
 
     suspend fun getTypeData(
-        category: Utils.Category,
+        category: String,
         type: String,
         page: Int = 1,
         count: Int = 10
-    ): TypeDataResponse = netClient.getTypeData(category.type, type, page, count)
+    ): TypeDataResponse = netClient.getTypeData(category, type, page, count)
 
-    suspend fun getRandomData(category: Utils.Category, type: String, count: Int = 1):
-            List<TypeData> = netClient.getRandomData(category.type, type, count).data
+    suspend fun getRandomData(category: String, type: String, count: Int = 1):
+            List<TypeData> = netClient.getRandomData(category, type, count).data
 
     suspend fun getDetail(postId: String): Detail = netClient.getDetail(postId).data
 
@@ -72,9 +73,9 @@ class NetClient private constructor() {
 
     suspend fun search(
         keyword: String,
-        category: Utils.Category,
+        category: String,
         type: String,
         page: Int = 1,
         count: Int = 10
-    ): List<SearchResult> = netClient.search(keyword, category.type, type, page, count).data
+    ): List<SearchResult> = netClient.search(keyword, category, type, page, count).data
 }

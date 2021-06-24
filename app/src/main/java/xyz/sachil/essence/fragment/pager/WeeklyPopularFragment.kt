@@ -1,4 +1,4 @@
-package xyz.sachil.essence.fragment
+package xyz.sachil.essence.fragment.pager
 
 import android.os.Bundle
 import android.view.Menu
@@ -13,7 +13,7 @@ import xyz.sachil.essence.util.Utils
 import xyz.sachil.essence.vm.SharedViewModel
 
 @KoinApiExtension
-class WeeklyPopularFragment : AbstractTypePagerFragment() {
+class WeeklyPopularFragment : AbstractPagerFragment() {
     companion object {
         private const val TAG = "WeeklyHottestFragment"
         private val CATEGORY = Utils.Category.WEEKLY_POPULAR
@@ -44,11 +44,11 @@ class WeeklyPopularFragment : AbstractTypePagerFragment() {
         item.isChecked = true
         return when (item.itemId) {
             R.id.menu_weekly_popular_sorted_by_view_count -> {
-                sharedViewModel.setWeeklyPopularRequest(CATEGORY, type, Utils.PopularType.VIEWS)
+                sharedViewModel.setWeeklyPopularType(Utils.PopularType.VIEWS)
                 true
             }
             R.id.menu_weekly_popular_sorted_by_star_count -> {
-                sharedViewModel.setWeeklyPopularRequest(CATEGORY, type, Utils.PopularType.LIKES)
+                sharedViewModel.setWeeklyPopularType(Utils.PopularType.LIKES)
                 true
             }
             else -> {

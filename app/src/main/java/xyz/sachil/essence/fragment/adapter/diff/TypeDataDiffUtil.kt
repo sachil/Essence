@@ -9,5 +9,8 @@ class TypeDataDiffUtil : DiffUtil.ItemCallback<TypeData>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: TypeData, newItem: TypeData): Boolean =
-        oldItem.title == newItem.title && oldItem.author == newItem.author && oldItem.publishedDate == newItem.publishedDate
+        (oldItem.title == newItem.title
+                && oldItem.author == newItem.author
+                && oldItem.viewCounts == newItem.viewCounts
+                && oldItem.likeCounts == newItem.likeCounts)
 }

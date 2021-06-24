@@ -7,30 +7,30 @@
 
     <fragment
         android:id="@+id/menu_navigation_essence"
-        android:name="xyz.sachil.essence.fragment.EssenceFragment"
+        android:name="xyz.sachil.essence.fragment.pager.EssenceFragment"
         android:label="@string/navigation_menu_essence"
         tools:layout="@layout/fragment_pager" />
 
     <fragment
         android:id="@+id/menu_navigation_article"
-        android:name="xyz.sachil.essence.fragment.ArticleFragment"
+        android:name="xyz.sachil.essence.fragment.pager.ArticleFragment"
         android:label="@string/navigation_menu_article"
         tools:layout="@layout/fragment_pager" />
 
     <fragment
         android:id="@+id/menu_navigation_weekly_popular"
-        android:name="xyz.sachil.essence.fragment.WeeklyPopularFragment"
+        android:name="xyz.sachil.essence.fragment.pager.WeeklyPopularFragment"
         android:label="@string/navigation_menu_weekly_popular" />
 
     <fragment
         android:id="@+id/menu_navigation_girl"
-        android:name="xyz.sachil.essence.fragment.GirlImageFragment"
+        android:name="xyz.sachil.essence.fragment.pager.GirlImageFragment"
         android:label="@string/navigation_menu_girl"
         tools:layout="@layout/fragment_type_data" />
 
     <fragment
         android:id="@+id/menu_navigation_settings"
-        android:name="xyz.sachil.essence.fragment.SettingsFragment"
+        android:name="xyz.sachil.essence.fragment.pager.SettingsFragment"
         android:label="@string/navigation_menu_settings"
         tools:layout="@layout/fragment_settings" />
 

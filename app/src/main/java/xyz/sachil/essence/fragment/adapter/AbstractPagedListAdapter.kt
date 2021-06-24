@@ -2,7 +2,6 @@ package xyz.sachil.essence.fragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +16,7 @@ import xyz.sachil.essence.fragment.vh.LoadingStateViewHolder
 import xyz.sachil.essence.fragment.vh.LoadingStateViewHolder.Companion.ITEM_TYPE_STATE_LOADING
 import xyz.sachil.essence.fragment.vh.NoMoreStateViewHolder
 import xyz.sachil.essence.fragment.vh.NoMoreStateViewHolder.Companion.ITEM_TYPE_STATE_NO_MORE
-import xyz.sachil.essence.repository.*
+import xyz.sachil.essence.util.*
 
 abstract class AbstractPagedListAdapter<T>(diffUtil: DiffUtil.ItemCallback<T>) :
     PagedListAdapter<T, RecyclerView.ViewHolder>(diffUtil) {

@@ -1,10 +1,9 @@
-package xyz.sachil.essence.fragment
+package xyz.sachil.essence.fragment.pager
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
@@ -15,12 +14,13 @@ import xyz.sachil.essence.R
 import xyz.sachil.essence.databinding.FragmentPagerBinding
 import xyz.sachil.essence.fragment.adapter.TypePagerAdapter
 import xyz.sachil.essence.util.Utils
+import xyz.sachil.essence.util.showErrorMessage
 import xyz.sachil.essence.vm.TypeViewModel
 
 @KoinApiExtension
-abstract class AbstractTypePagerFragment : Fragment() {
+abstract class AbstractPagerFragment : Fragment() {
     companion object {
-        private const val TAG = "TypePagerFragment"
+        private const val TAG = "AbstractPagerFragment"
     }
 
     protected var type: String = Utils.Category.GAN_HUO.type
@@ -39,9 +39,9 @@ abstract class AbstractTypePagerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         addObservers()
-        if (getCategory() == Utils.Category.WEEKLY_POPULAR) {
-            registerPageChangeCallback()
-        }
+//        if (getCategory() == Utils.Category.WEEKLY_POPULAR) {
+//            registerPageChangeCallback()
+//        }
         requestPagerData()
     }
 
@@ -75,7 +75,10 @@ abstract class AbstractTypePagerFragment : Fragment() {
 
     private fun handleError() {
         typeViewModel.error.observe(requireActivity()) {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            val message = it.getMessageIfNotHandled()
+            if(message != null){
+                viewBinding.snackBarContainer.showErrorMessage(message)
+            }
         }
     }
 
@@ -106,16 +109,16 @@ abstract class AbstractTypePagerFragment : Fragment() {
     }
 
 
-    private fun registerPageChangeCallback() {
-        viewBinding.viewPager.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                val pagerAdapter = viewBinding.viewPager.adapter
-                if (pagerAdapter != null && pagerAdapter is TypePagerAdapter) {
-                    type = pagerAdapter.getItem(position)
-                }
-            }
-        })
-    }
+//    private fun registerPageChangeCallback() {
+//        viewBinding.viewPager.registerOnPageChangeCallback(object :
+//            ViewPager2.OnPageChangeCallback() {
+//            override fun onPageSelected(position: Int) {
+//                val pagerAdapter = viewBinding.viewPager.adapter
+//                if (pagerAdapter != null && pagerAdapter is TypePagerAdapter) {
+//                    type = pagerAdapter.getItem(position)
+//                }
+//            }
+//        })
+//    }
 
 }

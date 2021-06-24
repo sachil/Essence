@@ -1,4 +1,4 @@
-package xyz.sachil.essence.repository
+package xyz.sachil.essence.util
 
 sealed class LoadState
 

@@ -13,23 +13,56 @@ import xyz.sachil.essence.model.cache.converter.ListConverter
     indices = [Index(value = ["category", "type"])],
 )
 @TypeConverters(ListConverter::class)
-data class TypeData(
-    @ColumnInfo(name = "category") @SerializedName("category") val category: String,
-    @ColumnInfo(name = "id") @SerializedName("_id") val id: String,
-    @ColumnInfo(name = "author") @SerializedName("author") val author: String,
-    @ColumnInfo(name = "created_date") @SerializedName("createdAt") val createdDate: String,
-    @ColumnInfo(name = "description") @SerializedName("desc") val description: String,
-    @ColumnInfo(name = "images") @SerializedName("images") val images: List<String>,
-    @ColumnInfo(name = "like_counts") @SerializedName("likeCounts") val likeCounts: Int,
-    @ColumnInfo(name = "published_date") @SerializedName("publishedAt") val publishedDate: String,
-    @ColumnInfo(name = "stars") @SerializedName("stars") val starCount: Int,
-    @ColumnInfo(name = "title") @SerializedName("title") val title: String,
-    @ColumnInfo(name = "type") @SerializedName("type") val type: String,
-    @ColumnInfo(name = "url") @SerializedName("url") val url: String,
-    @ColumnInfo(name = "views") @SerializedName("views") val viewCounts: Int
-) {
-    @ColumnInfo(name = "owner")
-    var owner: String = ""
-    @ColumnInfo(name = "popular_type")
-    var popularType: String? = null
+open class TypeData {
+    @ColumnInfo(name = "category")
+    @SerializedName("category")
+    var category: String = ""
+
+    @ColumnInfo(name = "id")
+    @SerializedName("_id")
+    var id: String = ""
+
+    @ColumnInfo(name = "author")
+    @SerializedName("author")
+    var author: String = ""
+
+    @ColumnInfo(name = "created_date")
+    @SerializedName("createdAt")
+    var createdDate: String = ""
+
+    @ColumnInfo(name = "description")
+    @SerializedName("desc")
+    var description: String = ""
+
+    @ColumnInfo(name = "images")
+    @SerializedName("images")
+    var images: List<String> = emptyList()
+
+    @ColumnInfo(name = "like_counts")
+    @SerializedName("likeCounts")
+    var likeCounts: Int = 0
+
+    @ColumnInfo(name = "published_date")
+    @SerializedName("publishedAt")
+    var publishedDate: String = ""
+
+    @ColumnInfo(name = "stars")
+    @SerializedName("stars")
+    var starCount: Int = 0
+
+    @ColumnInfo(name = "title")
+    @SerializedName("title")
+    var title: String = ""
+
+    @ColumnInfo(name = "type")
+    @SerializedName("type")
+    var type: String = ""
+
+    @ColumnInfo(name = "url")
+    @SerializedName("url")
+    var url: String = ""
+
+    @ColumnInfo(name = "views")
+    @SerializedName("views")
+    var viewCounts: Int = 0
 }

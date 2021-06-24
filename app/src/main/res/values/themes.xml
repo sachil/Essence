@@ -19,14 +19,21 @@
     </style>
 
     <style name="SplashTheme" parent="FullScreenTheme">
-        <item name="android:windowFullscreen">true</item>
+
         <item name="android:background">@drawable/bg_activity_splash</item>
-        <item name="android:navigationBarColor">@color/backgroundColor</item>
+        <item name="android:navigationBarColor">@color/launcherBackgroundColor</item>
     </style>
 
     <style name="NavigationTextTheme" parent="@style/TextAppearance.AppCompat.Medium">
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+<!--    <style name="WindowAnimator">-->
+<!--        <item name="android:activityOpenEnterAnimation"></item>-->
+<!--        <item name="android:activityOpenExitAnimation"></item>-->
+<!--        <item name="android:activityCloseEnterAnimation"></item>-->
+<!--        <item name="android:activityCloseExitAnimation"></item>-->
+<!--    </style>-->
 
 </resources>

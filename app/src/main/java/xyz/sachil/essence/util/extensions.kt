@@ -1,10 +1,17 @@
 package xyz.sachil.essence.util
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
@@ -20,6 +27,15 @@ import xyz.sachil.essence.widget.decoration.StaggeredGridItemDecoration
 import java.io.File
 import java.math.BigDecimal
 import java.util.*
+
+
+fun View.showErrorMessage(
+    @StringRes message: Int,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT
+) {
+    Snackbar.make(this, resources.getString(message), duration).show()
+}
+
 
 fun TypeData.hasImage(): Boolean {
     var prefix = ""
@@ -116,6 +132,19 @@ fun Context.setWeeklyPopularType(popularType: Utils.PopularType) {
     editor.apply()
 }
 
+fun Context.getDefaultNightMode(): Int {
+    val sp = getSharedPreferences(Utils.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+    return sp.getInt("defaultNightMode", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+}
+
+fun Context.setDefaultNightMode(mode: Int) {
+    val sp = getSharedPreferences(Utils.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+    val editor = sp.edit()
+    editor.putInt("defaultNightMode", mode)
+    editor.apply()
+}
+
+
 fun Context.getCacheSize(): String = cacheDir.getSize().getFormatSize()
 
 fun Context.clearCache() {
@@ -127,6 +156,7 @@ fun Context.clearDatabase() {
     val database = CacheDatabase.newInstance(this)
     database.typeDao().deleteAllData()
     database.typeDataDao().deleteAllData()
+    database.weeklyPopularDataDao().deleteAllData()
 }
 
 

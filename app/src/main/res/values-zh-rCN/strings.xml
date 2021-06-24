@@ -23,8 +23,25 @@
 
     <string name="recycler_view_empty_helper">暂时没有数据</string>
 
-    <string name="dialog_title">提示</string>
+    <string name="settings_dark_theme">深色模式</string>
+    <string name="settings_clear_cache">清除缓存</string>
+    <string name="settings_about"> 关于Essence</string>
+
+    <string-array name="dialog_dark_theme">
+        <item>跟随系统</item>
+        <item>正常模式</item>
+        <item>夜间模式</item>
+    </string-array>
+
+    <string name="dialog_clear_cache_title">提示</string>
     <string name="dialog_positive_button">确定</string>
     <string name="dialog_negative_button">取消</string>
     <string name="dialog_clear_cache_tips">确定要删除所有缓存？离线内容及图片均会被清除</string>
+    <string name="dialog_about_open_code_url">开源地址:</string>
+
+    <string name="exception_timeout">连接超时，请稍候重试</string>
+    <string name="exception_http">网络异常，请稍候重试</string>
+    <string name="exception_no_network">没有网络连接，请稍候重试</string>
+    <string name="exception_unknown">出了一点小意外，请稍候重试</string>
+
 </resources>

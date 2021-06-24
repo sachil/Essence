@@ -1,10 +1,10 @@
-package xyz.sachil.essence.fragment
+package xyz.sachil.essence.fragment.pager
 
 import org.koin.core.component.KoinApiExtension
 import xyz.sachil.essence.util.Utils
 
 @KoinApiExtension
-class ArticleFragment : AbstractTypePagerFragment() {
+class ArticleFragment : AbstractPagerFragment() {
     companion object {
         private const val TAG = "ArticleFragment"
         private val CATEGORY = Utils.Category.ARTICLE

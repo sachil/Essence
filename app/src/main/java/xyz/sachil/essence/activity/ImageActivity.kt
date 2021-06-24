@@ -2,23 +2,17 @@ package xyz.sachil.essence.activity
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.Transition
 import kotlinx.coroutines.*
-import xyz.sachil.essence.R
 import xyz.sachil.essence.databinding.ActivityImageBinding
 import xyz.sachil.essence.model.net.GlideApp
 import xyz.sachil.essence.widget.ScalableImageView

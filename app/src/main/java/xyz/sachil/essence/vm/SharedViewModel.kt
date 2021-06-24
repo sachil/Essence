@@ -7,22 +7,11 @@ import xyz.sachil.essence.util.Utils
 
 class SharedViewModel : ViewModel() {
 
-    private val internalWeeklyPopularRequest = MutableLiveData<WeeklyPopularRequest>()
-    val weeklyPopularRequest: LiveData<WeeklyPopularRequest> get() = internalWeeklyPopularRequest
+    private val internalWeeklyPopularType = MutableLiveData<Utils.PopularType>()
+    val weeklyPopularType: LiveData<Utils.PopularType> get() = internalWeeklyPopularType
 
-    fun setWeeklyPopularRequest(
-        category: Utils.Category,
-        type: String,
-        popularType: Utils.PopularType
-    ) {
-        internalWeeklyPopularRequest.value = WeeklyPopularRequest(category, type, popularType)
+    fun setWeeklyPopularType(popularType: Utils.PopularType) {
+        internalWeeklyPopularType.value = popularType
     }
-
-
-    data class WeeklyPopularRequest(
-        val category: Utils.Category,
-        val type: String,
-        val popularType: Utils.PopularType
-    )
 
 }

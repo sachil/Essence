@@ -3,28 +3,45 @@
     <string name="app_name">Essence</string>
     <string name="exit_app_help_toast">再按一次退出</string>
 
-    <string name="navigation_menu_essence">干货</string>
-    <string name="navigation_menu_article">专题</string>
-    <string name="navigation_menu_weekly_popular">本周最热</string>
-    <string name="navigation_menu_girl">妹纸</string>
-    <string name="navigation_menu_settings">设置</string>
+    <string name="navigation_menu_essence">幹貨</string>
+    <string name="navigation_menu_article">專題</string>
+    <string name="navigation_menu_weekly_popular">本周最熱</string>
+    <string name="navigation_menu_girl">妹紙</string>
+    <string name="navigation_menu_settings">設置</string>
 
-    <string name="tab_category_type_article">专题</string>
-    <string name="tab_category_type_essence">干货</string>
-    <string name="tab_category_type_girl">妹纸</string>
+    <string name="tab_category_type_article">專題</string>
+    <string name="tab_category_type_essence">幹貨</string>
+    <string name="tab_category_type_girl">妹紙</string>
 
-    <string name="recycler_view_state_loading">正在加载...</string>
-    <string name="recycler_view_state_failed">加载失败</string>
-    <string name="recycler_view_state_no_more">已经到底了</string>
+    <string name="recycler_view_state_loading">正在加載...</string>
+    <string name="recycler_view_state_failed">加載失敗</string>
+    <string name="recycler_view_state_no_more">已經到底了</string>
 
-    <string name="menu_weekly_popular_sorted_by_view_count">按浏览排序</string>
+    <string name="menu_weekly_popular_sorted_by_view_count">按瀏覽排序</string>
     <string name="menu_weekly_popular_sorted_by_star_count">按收藏排序</string>
-    <string name="menu_weekly_popular_sorted_by_comment_count">按回复排序</string>
+    <string name="menu_weekly_popular_sorted_by_comment_count">按回復排序</string>
 
-    <string name="recycler_view_empty_helper">暂时没有数据</string>
+    <string name="recycler_view_empty_helper">暫時沒有數據</string>
 
-    <string name="dialog_title">提示</string>
-    <string name="dialog_positive_button">确定</string>
+    <string name="settings_dark_theme">深色模式</string>
+    <string name="settings_clear_cache">清除緩存</string>
+    <string name="settings_about"> 關於Essence</string>
+
+    <string-array name="dialog_dark_theme">
+        <item>跟隨系統</item>
+        <item>正常模式</item>
+        <item>夜間模式</item>
+    </string-array>
+
+    <string name="dialog_clear_cache_title">提示</string>
+    <string name="dialog_positive_button">確定</string>
     <string name="dialog_negative_button">取消</string>
-    <string name="dialog_clear_cache_tips">确定要删除所有缓存？离线内容及图片均会被清除</string>
+    <string name="dialog_clear_cache_tips">確定要刪除所有緩存？離線內容及圖片均會被清除</string>
+    <string name="dialog_about_open_code_url">開源地址:</string>
+
+    <string name="exception_timeout">連接超時，請稍候重試</string>
+    <string name="exception_http">網絡異常，請稍候重試</string>
+    <string name="exception_no_network">沒有網絡連接，請稍候重試</string>
+    <string name="exception_unknown">出了一點小意外，請稍候重試</string>
+
 </resources>

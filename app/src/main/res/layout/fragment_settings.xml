@@ -16,13 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorSurface"
-            app:constraint_referenced_ids="switchTheme,clearCache,about"
+            app:constraint_referenced_ids="darkTheme,defaultNightMode,clearCache,cacheSize,about"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/switchTheme"
+            android:id="@+id/darkTheme"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_48"
             android:layout_marginTop="@dimen/dp_16"
@@ -32,21 +32,32 @@
             android:gravity="center_vertical"
             android:paddingStart="@dimen/dp_16"
             android:paddingEnd="@dimen/dp_16"
-            android:text="切换主题"
+            android:text="@string/settings_dark_theme"
             android:textColor="@color/highEmphasisTextColor"
             android:textSize="@dimen/sp_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/defaultNightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_44"
+            android:textColor="@color/mediumEmphasisTextColor"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toBottomOf="@id/darkTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/darkTheme" />
+
         <ImageView
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
             android:layout_marginEnd="@dimen/dp_16"
             android:src="@drawable/icon_fragment_settings_next_normal"
-            app:layout_constraintBottom_toBottomOf="@id/switchTheme"
+            app:layout_constraintBottom_toBottomOf="@id/darkTheme"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/switchTheme" />
+            app:layout_constraintTop_toTopOf="@id/darkTheme" />
 
         <View
             android:layout_width="match_parent"
@@ -54,7 +65,7 @@
             android:background="@color/backgroundColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/switchTheme" />
+            app:layout_constraintTop_toBottomOf="@id/darkTheme" />
 
         <TextView
             android:id="@+id/clearCache"
@@ -67,24 +78,23 @@
             android:gravity="center_vertical"
             android:paddingStart="@dimen/dp_16"
             android:paddingEnd="@dimen/dp_16"
-            android:text="清除缓存"
+            android:text="@string/settings_clear_cache"
             android:textColor="@color/highEmphasisTextColor"
             android:textSize="@dimen/sp_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/switchTheme" />
+            app:layout_constraintTop_toBottomOf="@id/darkTheme" />
 
         <TextView
-            android:id="@+id/CacheSize"
+            android:id="@+id/cacheSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="清除缓存"
+            android:layout_marginEnd="@dimen/dp_44"
             android:textColor="@color/mediumEmphasisTextColor"
             android:textSize="@dimen/sp_14"
-            app:layout_constraintTop_toTopOf="@id/clearCache"
             app:layout_constraintBottom_toBottomOf="@id/clearCache"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/dp_44"/>
+            app:layout_constraintTop_toTopOf="@id/clearCache" />
 
         <ImageView
             android:layout_width="@dimen/dp_20"
@@ -114,7 +124,7 @@
             android:gravity="center_vertical"
             android:paddingStart="@dimen/dp_16"
             android:paddingEnd="@dimen/dp_16"
-            android:text="关于Essence"
+            android:text="@string/settings_about"
             android:textColor="@color/highEmphasisTextColor"
             android:textSize="@dimen/sp_16"
             app:layout_constraintEnd_toEndOf="parent"

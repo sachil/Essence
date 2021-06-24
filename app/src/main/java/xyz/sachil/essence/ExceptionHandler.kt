@@ -3,27 +3,48 @@ package xyz.sachil.essence
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineExceptionHandler
 import retrofit2.HttpException
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 class ExceptionHandler {
 
-    val errorMessage = MutableLiveData<String>()
+    val errorMessage = MutableLiveData<ErrorMessage<Int>>()
 
-    //集中处理出现的异常
+    //使用CoroutineExceptionHandler来集中处理可能出现的异常
     fun getHandler(): CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, throwable ->
             throwable.printStackTrace()
             val message = when (throwable) {
+                is SocketTimeoutException -> {
+                    R.string.exception_timeout
+                }
                 is HttpException -> {
-                    "网络异常"
+                    R.string.exception_http
                 }
                 is UnknownHostException -> {
-                    "网络未连接"
+                    R.string.exception_no_network
                 }
                 else -> {
-                    "未知错误"
+                    R.string.exception_unknown
                 }
             }
-            errorMessage.postValue(message)
+            errorMessage.postValue(ErrorMessage(message))
         }
+
+    //用于规避livedata的粘性事件
+    class ErrorMessage<out T>(private val message: T) {
+        var hasBeenHandled = false
+            private set
+
+        fun getMessageIfNotHandled(): T? {
+            return if (hasBeenHandled) {
+                null
+            } else {
+                hasBeenHandled = true
+                message
+            }
+        }
+
+        fun peekMessage(): T = message
+    }
 }

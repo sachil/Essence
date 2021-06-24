@@ -1,13 +1,12 @@
-package xyz.sachil.essence.repository
+package xyz.sachil.essence.repository.wrap
 
 import kotlinx.coroutines.CoroutineScope
 import xyz.sachil.essence.util.Utils
 import kotlin.coroutines.CoroutineContext
 
-data class TypeDataRequest(
+data class DataRequest(
     val coroutineScope: CoroutineScope,
     val coroutineContext: CoroutineContext,
-    val category: Utils.Category,
-    val type: String,
-    val popularType: Utils.PopularType = Utils.PopularType.VIEWS
+    val category: String,
+    val type: String
 )

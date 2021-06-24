@@ -22,6 +22,7 @@
 
         <activity
             android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
 
             <intent-filter>
@@ -32,12 +33,17 @@
 
         </activity>
 
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.MarkdownActivity" />
+        <activity
+            android:name=".activity.MarkdownActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".activity.ImageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme" />
 
     </application>
