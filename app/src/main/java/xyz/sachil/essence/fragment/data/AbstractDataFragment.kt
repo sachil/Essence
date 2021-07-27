@@ -70,7 +70,6 @@ abstract class AbstractDataFragment : Fragment() {
     //用于显示或者隐藏emptyView
     protected fun updateView() {
         if (typeDataAdapter.getRealItemCount() > 0) {
-            viewBinding.recyclerView.scrollToPosition(0)
             viewBinding.emptyView.visibility = View.GONE
             viewBinding.recyclerView.visibility = View.VISIBLE
         } else {
